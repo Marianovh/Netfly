@@ -3,7 +3,7 @@
   publish = "." # Reemplaza con la ubicación de tus archivos públicos
 
 [context.production]
-  command = ""
+  command = "npm install && node app.js"
   publish = "" # Reemplaza con la ubicación de tus archivos públicos
 
 [context.deploy-preview]
