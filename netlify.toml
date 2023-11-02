@@ -1,19 +1,19 @@
 [build]
   command = "npm install pm2 && npm install && pm2 start app.js --name mi-api --watch"
-  publish = "ruta/a/tu/carpeta/public"
+  publish = "."
 
 [context.production]
   command = "npm install pm2 && pm2 start app.js --name mi-api --watch"
-  publish = "ruta/a/tu/carpeta/public"
+  publish = "."
 
 [context.deploy-preview]
   command = "npm install pm2 && pm2 start app.js --name mi-api --watch"
-  publish = "ruta/a/tu/carpeta/public"
+  publish = "."
 
 [context.branch-deploy]
   command = "npm install pm2 && pm2 start app.js --name mi-api --watch"
-  publish = "ruta/a/tu/carpeta/public"
+  publish = "."
 
 [context.split1]
   command = "npm install pm2 && pm2 start app.js --name mi-api --watch"
-  publish = "ruta/a/tu/carpeta/public"
+  publish = "."
