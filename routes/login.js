@@ -10,11 +10,11 @@ router.post("/", async (req, res) => {
   try {
     const db = getDB();
     const collection = db.collection(collectionName);
-    const { email, clave } = req.body;
+    const { email, password } = req.body;
 
     const usuarioEncontrado = await collection.findOne({
       email,
-      clave,
+      password,
     });
 
     if (!usuarioEncontrado) {

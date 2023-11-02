@@ -29,7 +29,7 @@ router.post("/:dpi", async (req, res) => {
       nit: req.body.nit,
       numeroTelefono: req.body.numeroTelefono,
       email: req.body.email,
-      clave: req.body.clave,
+      password: req.body.password,
     });
   } catch (error) {
     console.error("Error al insertar documento:", error);
