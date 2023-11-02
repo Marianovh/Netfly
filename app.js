@@ -9,7 +9,6 @@ const productosRouter = require("./routes/productos");
 const carritoRouter = require("./routes/carrito");
 const compraRouter = require("./routes/compra");
 const { verifyToken } = require("./routes/auth");
-const express = require("express");
 const cors = require("cors"); // Importa el paquete 'cors'
 
 connect();
