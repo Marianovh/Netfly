@@ -1,19 +1,18 @@
 [build]
-  command = "npm install && node app.js"
-  publish = "." # Reemplaza con la ubicación de tus archivos públicos
+  publish = "ruta/a/tu/carpeta/public" # Reemplaza con la ubicación de tus archivos públicos
 
 [context.production]
-  command = ""
-  publish = "" # Reemplaza con la ubicación de tus archivos públicos
+  command = "npm install && pm2 start app.js --name mi-api --watch"
+  publish = "ruta/a/tu/carpeta/public"
 
 [context.deploy-preview]
-  command = ""
-  publish = "" # Reemplaza con la ubicación de tus archivos públicos
+  command = "npm install && pm2 start app.js --name mi-api --watch"
+  publish = "ruta/a/tu/carpeta/public"
 
 [context.branch-deploy]
-  command = ""
-  publish = "" # Reemplaza con la ubicación de tus archivos públicos
+  command = "npm install && pm2 start app.js --name mi-api --watch"
+  publish = "ruta/a/tu/carpeta/public"
 
 [context.split1]
-  command = ""
-  publish = "" # Reemplaza con la ubicación de tus archivos públicos
+  command = "npm install && pm2 start app.js --name mi-api --watch"
+  publish = "ruta/a/tu/carpeta/public"
