@@ -4,15 +4,15 @@
 
 [context.production]
   command = ""
-  publish = "." # Reemplaza con la ubicación de tus archivos públicos
+  publish = "" # Reemplaza con la ubicación de tus archivos públicos
 
 [context.deploy-preview]
   command = ""
-  publish = "." # Reemplaza con la ubicación de tus archivos públicos
+  publish = "" # Reemplaza con la ubicación de tus archivos públicos
 
 [context.branch-deploy]
   command = ""
-  publish = "." # Reemplaza con la ubicación de tus archivos públicos
+  publish = "" # Reemplaza con la ubicación de tus archivos públicos
 
 [context.split1]
   command = ""
