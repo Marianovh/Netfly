@@ -1,0 +1,19 @@
+[build]
+  command = "npm install && node app.js"
+  publish = "." # Reemplaza con la ubicación de tus archivos públicos
+
+[context.production]
+  command = "npm install && node app.js"
+  publish = "." # Reemplaza con la ubicación de tus archivos públicos
+
+[context.deploy-preview]
+  command = "npm install && node app.js"
+  publish = "." # Reemplaza con la ubicación de tus archivos públicos
+
+[context.branch-deploy]
+  command = "npm install && node app.js"
+  publish = "." # Reemplaza con la ubicación de tus archivos públicos
+
+[context.split1]
+  command = "npm install && node app.js"
+  publish = "." # Reemplaza con la ubicación de tus archivos públicos
