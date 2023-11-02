@@ -14,9 +14,9 @@ router.get("/", verifyToken, async (req, res) => {
 
     const db = getDB();
     const collection = db.collection(collectionProductos);
-    const usuario = req.user.CorreoElectronico;
+    const usuario = req.user.email;
 
-    const carrito = await collection.findOne({ CorreoElectronico: usuario });
+    const carrito = await collection.findOne({ email: usuario });
 
     if (!carrito || !carrito.Productos || carrito.Productos.length === 0) {
       res.status(404).json({ message: "Carrito de compras vacío" });
@@ -40,7 +40,7 @@ router.post("/", verifyToken, async (req, res) => {
 
     const db = getDB();
     const collection = db.collection(collectionProductos); // Supongo que has definido collectionProductos en otro lugar de tu código
-    const usuario = req.user.CorreoElectronico;
+    const usuario = req.user.email;
     const datosFromBody = req.body;
 
     // Verifica si algún campo está vacío
@@ -70,12 +70,12 @@ router.post("/", verifyToken, async (req, res) => {
     }
 
     // Obtiene el carrito de compras actual del usuario
-    const carrito = await collection.findOne({ CorreoElectronico: usuario });
+    const carrito = await collection.findOne({ email: usuario });
 
     if (!carrito) {
       // Si el usuario no tiene un carrito de compras, crea uno nuevo
       const nuevoCarrito = {
-        CorreoElectronico: usuario,
+        email: usuario,
         Productos: [
           { ...producto, Cantidad: parseInt(datosFromBody.Cantidad) },
         ],
@@ -107,10 +107,7 @@ router.post("/", verifyToken, async (req, res) => {
         carrito.Total +=
           producto.PrecioDescuento * parseInt(datosFromBody.Cantidad);
       }
-      await collection.updateOne(
-        { CorreoElectronico: usuario },
-        { $set: carrito }
-      );
+      await collection.updateOne({ email: usuario }, { $set: carrito });
     }
 
     // Actualiza la disponibilidad del producto en la base de datos general
@@ -123,7 +120,7 @@ router.post("/", verifyToken, async (req, res) => {
 
     // Responde con los detalles del carrito de compras actualizado
     const carritoActualizado = await collection.findOne({
-      CorreoElectronico: usuario,
+      email: usuario,
     });
     res.status(200).json(carritoActualizado);
   } catch (error) {
@@ -142,10 +139,10 @@ router.delete("/", verifyToken, async (req, res) => {
 
     const db = getDB();
     const collection = db.collection(collectionProductos); // Supongo que has definido collectionProductos en otro lugar de tu código
-    const usuario = req.user.CorreoElectronico;
+    const usuario = req.user.email;
 
     // Obtiene el carrito de compras actual del usuario
-    const carrito = await collection.findOne({ CorreoElectronico: usuario });
+    const carrito = await collection.findOne({ email: usuario });
 
     if (!carrito || !carrito.Productos || carrito.Productos.length === 0) {
       res.status(404).json({ message: "Carrito de compras vacío" });
@@ -168,7 +165,7 @@ router.delete("/", verifyToken, async (req, res) => {
     }
 
     // Elimina el carrito de compras del usuario
-    await collection.deleteOne({ CorreoElectronico: usuario });
+    await collection.deleteOne({ email: usuario });
 
     res.status(200).json({ message: "Carrito de compras eliminado con éxito" });
   } catch (error) {

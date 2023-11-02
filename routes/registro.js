@@ -28,7 +28,7 @@ router.post("/:dpi", async (req, res) => {
       direccion: req.body.direccion,
       nit: req.body.nit,
       numeroTelefono: req.body.numeroTelefono,
-      CorreoElectronico: req.body.CorreoElectronico,
+      email: req.body.email,
       clave: req.body.clave,
     });
   } catch (error) {

@@ -10,10 +10,10 @@ router.post("/", async (req, res) => {
   try {
     const db = getDB();
     const collection = db.collection(collectionName);
-    const { CorreoElectronico, clave } = req.body;
+    const { email, clave } = req.body;
 
     const usuarioEncontrado = await collection.findOne({
-      CorreoElectronico,
+      email,
       clave,
     });
 
@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
       return;
     }
 
-    const token = jwt.sign({ CorreoElectronico }, "secretKey", {
+    const token = jwt.sign({ email }, "secretKey", {
       expiresIn: "1h",
     });
 

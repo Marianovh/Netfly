@@ -41,10 +41,8 @@ router.post("/:DPI", verifyToken, async (req, res) => {
     }
 
     const correoRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (!correoRegex.test(datosFromBody.CorreoElectronico)) {
-      res
-        .status(400)
-        .json({ message: "Formato de CorreoElectronico inválido" });
+    if (!correoRegex.test(datosFromBody.email)) {
+      res.status(400).json({ message: "Formato de email inválido" });
       return;
     }
 
@@ -57,7 +55,7 @@ router.post("/:DPI", verifyToken, async (req, res) => {
         direccion: datosFromBody.direccion,
         nit: datosFromBody.nit,
         numeroTelefono: datosFromBody.numeroTelefono,
-        CorreoElectronico: datosFromBody.CorreoElectronico,
+        email: datosFromBody.email,
       },
     };
 

@@ -18,7 +18,7 @@ router.post("/", verifyToken, async (req, res) => {
     const usuariosCollection = db.collection(collectionName);
     const productosCollection = db.collection(collectionProductos);
     const bitacorasCollection = db.collection(collectionbitacoras);
-    const usuario = req.user.CorreoElectronico;
+    const usuario = req.user.email;
 
     // ... Código del archivo routes/compra.js (como se proporcionó en respuestas anteriores) ...
 
