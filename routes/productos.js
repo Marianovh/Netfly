@@ -37,7 +37,7 @@ router.get("/:ID", verifyToken, async (req, res) => {
     const productoID = parseInt(req.params.ID);
 
     // Realiza una consulta para obtener el producto por su ID
-    const producto = await collection.findOne({ Identificador: productoID });
+    const producto = await collection.findOne({ ID: productoID });
 
     if (!producto) {
       res.status(404).json({ message: "Producto no encontrado" });
@@ -74,7 +74,7 @@ router.post("/:ID", verifyToken, async (req, res) => {
     }
 
     // Crea o actualiza el producto con el ID proporcionado
-    const filtro = { Identificador: productoID };
+    const filtro = { ID: productoID };
     const actualizacion = { $set: datosFromBody };
     const opciones = { upsert: true };
 
@@ -82,7 +82,7 @@ router.post("/:ID", verifyToken, async (req, res) => {
 
     // Responde con los detalles del producto actualizado o creado
     const productoActualizado = await collection.findOne({
-      Identificador: productoID,
+      ID: productoID,
     });
     res.status(200).json(productoActualizado);
   } catch (error) {
@@ -104,7 +104,7 @@ router.delete("/:ID", verifyToken, async (req, res) => {
     const productoID = parseInt(req.params.ID);
 
     // Actualiza el estado del producto para deshabilitarlo en lugar de eliminarlo
-    const filtro = { Identificador: productoID };
+    const filtro = { ID: productoID };
     const actualizacion = { $set: { Habilitado: false } };
     const resultado = await collection.updateOne(filtro, actualizacion);
 
