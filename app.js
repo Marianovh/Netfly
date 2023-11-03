@@ -15,7 +15,8 @@ connect();
 // Configura el middleware de CORS
 app.use(
   cors({
-    origin: "http://localhost:3000", // Reemplaza con tu dominio
+    origin: "http://localhost:3000",
+    origin: "https://netlify--coruscating-queijadas-1247a0.netlify.app", // Reemplaza con tu dominio
   })
 );
 app.use(function (req, res, next) {
