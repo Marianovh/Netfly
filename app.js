@@ -18,12 +18,16 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Origin",
     "https://netlify--coruscating-queijadas-1247a0.netlify.app"
   ); // Es lo mismo que la configuracion de CORS de abajo
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type, x-access-token");
   res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
 app.use(express.json());
 
