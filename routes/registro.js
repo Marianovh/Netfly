@@ -21,15 +21,6 @@ router.post("/:dpi", async (req, res) => {
 
     res.status(201).json({
       message: "Documento insertado con éxito",
-      dpi: req.params.dpi.toString(),
-      nombre: req.body.nombre,
-      apellido: req.body.apellido,
-      fechanacimiento: req.body.fechanacimiento,
-      direccion: req.body.direccion,
-      nit: req.body.nit,
-      numeroTelefono: req.body.numeroTelefono,
-      email: req.body.email,
-      password: req.body.password,
     });
   } catch (error) {
     console.error("Error al insertar documento:", error);
