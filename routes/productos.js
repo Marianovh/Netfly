@@ -5,6 +5,18 @@ const { getDB } = require("../db");
 const { verifyToken } = require("./auth");
 const router = express.Router();
 const collectionProductos = "PR1_Producto";
+const app = express();
+const cors = require("cors"); // Importa el paquete 'cors'
+app.use(function (req, res, next) {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://netlify--coruscating-queijadas-1247a0.netlify.app"
+  ); // Es lo mismo que la configuracion de CORS de abajo
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, x-access-token");
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
 router.get("/", verifyToken, async (req, res) => {
   try {
     if (!req.user) {
